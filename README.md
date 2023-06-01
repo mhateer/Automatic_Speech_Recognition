@@ -58,9 +58,9 @@ optional arguments:
   --logdir LOGDIR       set the log directory
 
 </pre>
-Instead of configuration in command line, you can also set the arguments above in [timit\_train.py](https://github.com/mhateer/Automatic_Speech_Recognition/blob/master/main/timit_train.py) in practice.
+Instead of configuration in command line, you can also set the arguments above in ![timit\ train.py] in practice.
 
-Besides, you can also run `main/run.sh` for both training and testing simultaneously! See [run\_timit.sh](https://github.com/mhateer/Automatic_Speech_Recognition/blob/master/main/run_timit.sh) for details.
+Besides, you can also run `main/run.sh` for both training and testing simultaneously! See ![run\_timit.sh] for details.
 
 ## Performance
 ### PER based dynamic BLSTM on TIMIT database, with casual tuning because time it limited
