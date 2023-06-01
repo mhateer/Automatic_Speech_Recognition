@@ -1,39 +1,6 @@
 # Automatic-Speech-Recognition
 End-to-end automatic speech recognition system implemented in TensorFlow.
 
-## Recent Updates
-- [x] **Support TensorFlow r1.0** (2017-02-24)
-- [x] **Support dropout for dynamic rnn** (2017-03-11)
-- [x] **Support running in shell file** (2017-03-11)
-- [x] **Support evaluation every several training epoches automatically** (2017-03-11)
-- [x] **Fix bugs for character-level automatic speech recognition** (2017-03-14)
-- [x] **Improve some function apis for reusable** (2017-03-14)
-- [x] **Add scaling for data preprocessing** (2017-03-15)
-- [x] **Add reusable support for LibriSpeech training** (2017-03-15)
-- [x] **Add simple n-gram model for random generation or statistical use** (2017-03-23)
-- [x] **Improve some code for pre-processing and training** (2017-03-23)
-- [x] **Replace TABs with blanks and add nist2wav converter script** (2017-04-20)
-- [x] **Add some data preparation code** (2017-05-01)
-- [x] **Add WSJ corpus standard preprocessing by s5 recipe** (2017-05-05)
-- [x] **Restructuring of the project. Updated train.py for usage convinience** (2017-05-06)
-- [x] **Finish feature module for timit, libri, wsj, support training for LibriSpeech** (2017-05-14)
-- [x] **Remove some unnecessary codes** (2017-07-22)
-- [x] **Add DeepSpeech2 implementation code** (2017-07-23)
-- [x] **Fix some bugs** (2017-08-06)
-- [x] **Add Layer Normalization RNN for efficiency** (2017-08-06)
-- [x] **Add Madarian Speech Recognition support** (2017-08-06)
-- [x] **Add Capsule Network Model** (2017-12-12)
-- [x] **Release 1.0.0 version** (2017-12-14)
-- [x] **Add Language Modeling Module** (2017-12-25)
-- [x] **Will support TF1.12 soon** (2019-10-17)
-
-## Recommendation
-If you want to replace feed dict operation with Tensorflow multi-thread and fifoqueue input pipeline, you can refer to my repo [TensorFlow-Input-Pipeline](https://github.com/zzw922cn/TensorFlow-Input-Pipeline) for more example codes. My own practices prove that fifoqueue input pipeline would improve the training speed in some time.
-
-If you want to look the history of speech recognition, I have collected the significant papers since 1981 in the ASR field. You can read awesome paper list in my repo [awesome-speech-recognition-papers](https://github.com/zzw922cn/awesome-speech-recognition-papers), all download links of papers are provided. I will update it every week to add new papers, including speech recognition, speech synthesis and language modelling. I hope that we won't miss any important papers in speech domain.
-
-All my public repos will be updated in future, thanks for your stars!
-
 ## Install and Usage
 Currently only python 3.5 is supported.
 
@@ -91,13 +58,13 @@ optional arguments:
   --logdir LOGDIR       set the log directory
 
 </pre>
-Instead of configuration in command line, you can also set the arguments above in [timit\_train.py](https://github.com/zzw922cn/Automatic_Speech_Recognition/blob/master/main/timit_train.py) in practice.
+Instead of configuration in command line, you can also set the arguments above in [timit\_train.py](https://github.com/mhateer/Automatic_Speech_Recognition/blob/master/main/timit_train.py) in practice.
 
-Besides, you can also run `main/run.sh` for both training and testing simultaneously! See [run\_timit.sh](https://github.com/zzw922cn/Automatic_Speech_Recognition/blob/master/main/run_timit.sh) for details.
+Besides, you can also run `main/run.sh` for both training and testing simultaneously! See [run\_timit.sh](https://github.com/mhateer/Automatic_Speech_Recognition/blob/master/main/run_timit.sh) for details.
 
 ## Performance
 ### PER based dynamic BLSTM on TIMIT database, with casual tuning because time it limited
-![image](https://github.com/zzw922cn/Automatic_Speech_Recognition/blob/master/PER.png)
+![image](https://github.com/mhateer/Automatic_Speech_Recognition/blob/master/PER.png)
 
 ### LibriSpeech recognition result without LM
 **Label**:
@@ -237,11 +204,11 @@ This is a powerful library for **automatic speech recognition**, it is implement
 
 The original TIMIT database contains 6300 utterances, but we find the 'SA' audio files occurs many times, it will lead bad bias for our speech recognition system. Therefore, we removed the all 'SA' files from the original dataset and attain the new TIMIT dataset, which contains only 5040 utterances including 3696 standard training set and 1344 test set.
 
-Automatic Speech Recognition transcribes a raw audio file into character sequences; the preprocessing stage converts a raw audio file into feature vectors of several frames. We first split each audio file into 20ms Hamming windows with an overlap of 10ms, and then calculate the 12 mel frequency ceptral coefficients, appending an energy variable to each frame. This results in a vector of length 13. We then calculate the delta coefficients and delta-delta coefficients, attaining a total of 39 coefficients for each frame. In other words, each audio file is split into frames using the Hamming windows function, and each frame is extracted to a feature vector of length 39 (to attain a feature vector of different length, modify the settings in the file [timit\_preprocess.py](https://github.com/zzw922cn/Automatic-Speech-Recognition/blob/master/src/feature/timit/timit_preprocess.py).
+Automatic Speech Recognition transcribes a raw audio file into character sequences; the preprocessing stage converts a raw audio file into feature vectors of several frames. We first split each audio file into 20ms Hamming windows with an overlap of 10ms, and then calculate the 12 mel frequency ceptral coefficients, appending an energy variable to each frame. This results in a vector of length 13. We then calculate the delta coefficients and delta-delta coefficients, attaining a total of 39 coefficients for each frame. In other words, each audio file is split into frames using the Hamming windows function, and each frame is extracted to a feature vector of length 39 (to attain a feature vector of different length, modify the settings in the file [timit\_preprocess.py](https://github.com/mhateer/Automatic-Speech-Recognition/blob/master/src/feature/timit/timit_preprocess.py).
 
 In folder data/mfcc, each file is a feature matrix with size timeLength\*39 of one audio file; in folder data/label, each file is a label vector according to the mfcc file.
 
-If you want to set your own data preprocessing, you can edit [calcmfcc.py](https://github.com/zzw922cn/Automatic-Speech-Recognition/blob/master/src/feature/core/calcmfcc.py) or [timit\_preprocess.py](https://github.com/zzw922cn/Automatic-Speech-Recognition/blob/master/src/feature/timit/timit_preprocess.py).
+If you want to set your own data preprocessing, you can edit [calcmfcc.py](https://github.com/mhateer/Automatic-Speech-Recognition/blob/master/src/feature/core/calcmfcc.py) or [timit\_preprocess.py](https://github.com/mhateer/Automatic-Speech-Recognition/blob/master/src/feature/timit/timit_preprocess.py).
 
 The original TIMIT dataset contains 61 phonemes, we use 61 phonemes for training and evaluation, but when scoring, we mappd the 61 phonemes into 39 phonemes for better performance. We do this mapping according to the paper [Speaker-independent phone recognition using hidden Markov models](http://repository.cmu.edu/cgi/viewcontent.cgi?article=2768&context=compsci). The mapping details are as follows:
 
@@ -404,15 +371,3 @@ TODO
 ## License
 MIT
 
-## Contact Us
-If this program is helpful to you, please give us a **star or fork** to encourage us to keep updating. Thank you! Besides, any issues or pulls are appreciated.
-
-Collaborators: 
-
-[zzw922cn](https://github.com/zzw922cn)
-
-[deepxuexi](https://github.com/deepxuexi)
-
-[hiteshpaul](https://github.com/hiteshpaul)
-
-[xxxxyzt](https://github.com/xxxxyzt)
