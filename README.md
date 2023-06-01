@@ -10,53 +10,6 @@ Clone the repository to your preferred directory and install using:
 sudo pip3 install -r requirements.txt
 sudo python3 setup.py install
 </pre>
-
-To use, simply run the following command:
-<pre>
-python main/timit_train.py [-h] [--mode MODE] [--keep [KEEP]] [--nokeep]
-                      [--level LEVEL] [--model MODEL] [--rnncell RNNCELL]
-                      [--num_layer NUM_LAYER] [--activation ACTIVATION]
-                      [--optimizer OPTIMIZER] [--batch_size BATCH_SIZE]
-                      [--num_hidden NUM_HIDDEN] [--num_feature NUM_FEATURE]
-                      [--num_classes NUM_CLASSES] [--num_epochs NUM_EPOCHS]
-                      [--lr LR] [--dropout_prob DROPOUT_PROB]
-                      [--grad_clip GRAD_CLIP] [--datadir DATADIR]
-                      [--logdir LOGDIR]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --mode MODE           set whether to train or test
-  --keep [KEEP]         set whether to restore a model, when test mode, keep
-                        should be set to True
-  --nokeep
-  --level LEVEL         set the task level, phn, cha, or seq2seq, seq2seq will
-                        be supported soon
-  --model MODEL         set the model to use, DBiRNN, BiRNN, ResNet..
-  --rnncell RNNCELL     set the rnncell to use, rnn, gru, lstm...
-  --num_layer NUM_LAYER
-                        set the layers for rnn
-  --activation ACTIVATION
-                        set the activation to use, sigmoid, tanh, relu, elu...
-  --optimizer OPTIMIZER
-                        set the optimizer to use, sgd, adam...
-  --batch_size BATCH_SIZE
-                        set the batch size
-  --num_hidden NUM_HIDDEN
-                        set the hidden size of rnn cell
-  --num_feature NUM_FEATURE
-                        set the size of input feature
-  --num_classes NUM_CLASSES
-                        set the number of output classes
-  --num_epochs NUM_EPOCHS
-                        set the number of epochs
-  --lr LR               set the learning rate
-  --dropout_prob DROPOUT_PROB
-                        set probability of dropout
-  --grad_clip GRAD_CLIP
-                        set the threshold of gradient clipping
-  --datadir DATADIR     set the data root directory
-  --logdir LOGDIR       set the log directory
-
 </pre>
 Instead of configuration in command line, you can also set the arguments above in ![timit\ train.py] in practice.
 
